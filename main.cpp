@@ -21,8 +21,16 @@ int main()
 			proSum = proSum+arr[i];
 		if(maxSum < proSum)
 			maxSum = proSum;
-			printf("ÒÔ%dÎªÓÒ±ß½çµÄ×Ó¶ÎºÍ×î´óÖµÊÇ%d\n",arr[i],maxSum);
+			printf("ä»¥%dä¸ºå³è¾¹ç•Œçš„å­æ®µå’Œæœ€å¤§å€¼æ˜¯%d\n",arr[i],maxSum);
 	}
-	printf("¸ÃÐòÁÐ×î´óÖµÎª%d\n",maxSum);
+	if(N<0)
+    {
+        printf("è¯¥åºåˆ—æœ€å¤§å€¼ä¸º0");
+    }
+    else
+    {
+        printf("è¯¥åºåˆ—æœ€å¤§å€¼ä¸º%d\n",maxSum);
+    }
+
 	return 0;
 }
