@@ -4,45 +4,45 @@
 #include <stdio.h>
 #include <math.h>
 using namespace std;
-FILE* fp;//Êä³öµ½ÎÄ¼ş
-int re_ten();//²úÉú10ÒÔÄÚµÄÕûÊı
-float fl_ten();//²úÉú10ÒÔÄÚ¸¡µãÊı
-int re_hundred();//²úÉú100ÒÔÄÚÕûÊı
-float fl_hundred();//²úÉú100ÒÔÄÚ¸¡µãÊı
-int symbol();//´ú±í¼Ó¼õ³Ë³ıËÄ¸ö·ûºÅ
-//ËÄÔòÔËËãÓ¦ÓÃ»§ÒªÇóµ÷ÓÃº¯Êı
+FILE* fp;//è¾“å‡ºåˆ°æ–‡ä»¶
+int re_ten();//äº§ç”Ÿ10ä»¥å†…çš„æ•´æ•°
+float fl_ten();//äº§ç”Ÿ10ä»¥å†…æµ®ç‚¹æ•°
+int re_hundred();//äº§ç”Ÿ100ä»¥å†…æ•´æ•°
+float fl_hundred();//äº§ç”Ÿ100ä»¥å†…æµ®ç‚¹æ•°
+int symbol();//ä»£è¡¨åŠ å‡ä¹˜é™¤å››ä¸ªç¬¦å·
+//å››åˆ™è¿ç®—åº”ç”¨æˆ·è¦æ±‚è°ƒç”¨å‡½æ•°
 void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way);
 void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way);
 void display_brackte1(int n,int rang,int add,int sub,int mul,int div,int way);
 void display_brackte2(int n,int rang,int add,int sub,int mul,int div,int way);
 int main()
 {
-    int n,intger,brackets;//¶¨ÖÆÌâÄ¿ÊıÁ¿,ÕûÊı»òĞ¡ÊıµÄ·½Ê½,À¨ºÅ
-    int add,sub,mul,div;//ÊäÈë¼Ó¼õ³Ë³ıµÄ·ûºÅ
-    int way;//ÊÇ·ñĞèÒªÊä³öµ½ÎÄ¼şÀï
-    int rang;//ËãÊ½·¶Î§
-    printf("Ğ¡Ñ§ËÄÔòÔËËã\n");
-    printf("Çë¶¨ÖÆÌâÄ¿ÊıÁ¿£º\n");
+    int n,intger,brackets;//å®šåˆ¶é¢˜ç›®æ•°é‡,æ•´æ•°æˆ–å°æ•°çš„æ–¹å¼,æ‹¬å·
+    int add,sub,mul,div;//è¾“å…¥åŠ å‡ä¹˜é™¤çš„ç¬¦å·
+    int way;//æ˜¯å¦éœ€è¦è¾“å‡ºåˆ°æ–‡ä»¶é‡Œ
+    int rang;//ç®—å¼èŒƒå›´
+    printf("å°å­¦å››åˆ™è¿ç®—\n");
+    printf("è¯·å®šåˆ¶é¢˜ç›®æ•°é‡ï¼š\n");
     cin>>n;
-    printf("ÇëÉèÖÃ×î´óÊı(0Îª10,1Îª100)\n");
+    printf("è¯·è®¾ç½®æœ€å¤§æ•°(0ä¸º10,1ä¸º100)\n");
     cin>>rang;
-    printf("ÊÇ·ñĞèÒª'+'(1ÎªĞèÒª,0Îª²»Ğè)\n");
+    printf("æ˜¯å¦éœ€è¦'+'(1ä¸ºéœ€è¦,0ä¸ºä¸éœ€)\n");
     cin>>add;
-    printf("ÊÇ·ñĞèÒª'-'(1ÎªĞèÒª,0Îª²»Ğè)\n");
+    printf("æ˜¯å¦éœ€è¦'-'(1ä¸ºéœ€è¦,0ä¸ºä¸éœ€)\n");
     cin>>sub;
-    printf("ÊÇ·ñĞèÒª'*'(1ÎªĞèÒª,0Îª²»Ğè)\n");
+    printf("æ˜¯å¦éœ€è¦'*'(1ä¸ºéœ€è¦,0ä¸ºä¸éœ€)\n");
     cin>>mul;
-    printf("ÊÇ·ñĞèÒª'/'(1ÎªĞèÒª,0Îª²»Ğè)\n");
+    printf("æ˜¯å¦éœ€è¦'/'(1ä¸ºéœ€è¦,0ä¸ºä¸éœ€)\n");
     cin>>div;
-    printf("Êı×ÖÀàĞÍ(1ÎªÕûÊı,0Îª¸¡µãÊı)\n");
+    printf("æ•°å­—ç±»å‹(1ä¸ºæ•´æ•°,0ä¸ºæµ®ç‚¹æ•°)\n");
     cin>>intger;
-    printf("ËãÊ½ÊÇ·ñ°üÀ¨À¨ºÅ(1ÎªĞèÒª,0Îª²»Ğè)\n");
+    printf("ç®—å¼æ˜¯å¦åŒ…æ‹¬æ‹¬å·(1ä¸ºéœ€è¦,0ä¸ºä¸éœ€)\n");
     cin>>brackets;
-    printf("ÊÇ·ñĞèÒªÊä³öµ½ÎÄ¼ş(1ÎªĞèÒª,0Îª²»Ğè)\n");
+    printf("æ˜¯å¦éœ€è¦è¾“å‡ºåˆ°æ–‡ä»¶(1ä¸ºéœ€è¦,0ä¸ºä¸éœ€)\n");
     cin>>way;
     if(intger==1)
-    {//ÕûÊı
-        switch(brackets)
+    {//æ•´æ•°
+        switch(brackets)//æ‹¬å·å‡ºç°çš„æƒ…å†µ
         {
         case 1:
             display_brackte1(n,rang,add,sub,mul,div,way);
@@ -54,7 +54,7 @@ int main()
 
     }
     if(intger==0)
-    {
+    {//è¦æ±‚æµ®ç‚¹æ•°å‡ºç°
         switch(brackets)
         {
         case 1:
@@ -68,7 +68,7 @@ int main()
     return 0;
 }
 
-//²úÉú0~10µÄËæ»úÊı
+//äº§ç”Ÿ0~10çš„éšæœºæ•°
 int re_ten()
 {
     int a;
@@ -76,7 +76,7 @@ int re_ten()
     a = rand() % 11;
     return a;
 }
-//²úÉú0~100µÄËæ»úÊı
+//äº§ç”Ÿ0~100çš„éšæœºæ•°
 int re_hundred()
 {
     int a;
@@ -84,7 +84,7 @@ int re_hundred()
     a = rand() % 101;
     return a;
 }
-//²úÉú0~10µÄËæ»ú¸¡µãÊı
+//äº§ç”Ÿ0~10çš„éšæœºæµ®ç‚¹æ•°
 float fl_ten()
 {
     float x,a=0.5,b=10.1;
@@ -102,7 +102,7 @@ float fl_hundred()
     return x;
 
 }
-//²úÉú1µ½4´ú±í¼Ó¼õ³Ë³ı
+//äº§ç”Ÿ1åˆ°4ä»£è¡¨åŠ å‡ä¹˜é™¤
 int symbol()
 {
     int a,b;
@@ -112,11 +112,11 @@ int symbol()
     b++;
     return b;
 }
-//ÕûÊı+µ¥Ò»ÔËËã
+//æ•´æ•°+å•ä¸€è¿ç®—
 void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
 {
     int a,b,c,i;
-    srand(time(0));//¸ù¾İÏµÍ³Ê±¼äÉèÖÃËæ»úÊıÖÖ×Ó
+    srand(time(0));//æ ¹æ®ç³»ç»Ÿæ—¶é—´è®¾ç½®éšæœºæ•°ç§å­
     fp = fopen("D:\\text.txt", "w");
     for(i=0;i<n;i++)
     {
@@ -127,18 +127,18 @@ void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
               b=re_ten();
           }
           if(rang==1)
-          {
+          {//äº§ç”Ÿ0-100çš„æ•´æ•°
               a=re_hundred();
               b=re_hundred();
           }
-        if(add==1&&c==1)
+        if(add==1&&c==1)//å…è®¸åŠ å·å‡ºç°
         {
             cout<<a<<"+"<<b<<"="<<endl;
             if(way==1)
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
-			  {
-				 printf("error£¡\n");
+			  {//è¾“å…¥æ–‡ä»¶å¤±è´¥
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -156,7 +156,7 @@ void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -169,10 +169,10 @@ void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
             {
                 cout<<b<<"-"<<a<<"="<<endl;
                 if(way==1)
-            {
+            {//ç”¨æˆ·è¦æ±‚è¾“å‡ºåˆ°æ–‡ä»¶é‡Œ
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -189,7 +189,7 @@ void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -205,7 +205,7 @@ void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -219,12 +219,12 @@ void display_single_int(int n,int rang,int add,int sub,int mul,int div,int way)
 
 }
 
-//¸¡µãÊı+µ¥Ò»ÔËËãÊ±
+//æµ®ç‚¹æ•°+å•ä¸€è¿ç®—æ—¶
 void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way)
 {
     int c,i;
     float a,b;
-    srand(time(0));//¸ù¾İÏµÍ³Ê±¼äÉèÖÃËæ»úÊıÖÖ×Ó
+    srand(time(0));//æ ¹æ®ç³»ç»Ÿæ—¶é—´è®¾ç½®éšæœºæ•°ç§å­
     fp = fopen("D:\\text.txt", "w");
     for(i=0;i<n;i++)
     {
@@ -246,7 +246,7 @@ void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -264,7 +264,7 @@ void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way
                {
                    if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			      {
-				    printf("error£¡\n");
+				    printf("errorï¼\n");
 				    exit(0);
                   }
                    else
@@ -280,7 +280,7 @@ void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way
                {
                    if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			      {
-				     printf("error£¡\n");
+				     printf("errorï¼\n");
 				     exit(0);
                   }
                    else
@@ -297,7 +297,7 @@ void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -313,7 +313,7 @@ void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way
             {
               if ((fp = fopen("D:\\text.txt", "a")) == NULL)
 			  {
-				 printf("error£¡\n");
+				 printf("errorï¼\n");
 				 exit(0);
               }
               else
@@ -326,15 +326,15 @@ void display_single_float(int n,int rang,int add,int sub,int mul,int div,int way
     }
 
 }
-//ÕûÊı+À¨ºÅÔËËãÊ½×Ó
+//æ•´æ•°+æ‹¬å·è¿ç®—å¼å­
 void display_brackte1(int n,int rang,int add,int sub,int mul,int div,int way)
 {
-    srand(time(0));//¸ù¾İÏµÍ³Ê±¼äÉèÖÃËæ»úÊıÖÖ×Ó
+    srand(time(0));//æ ¹æ®ç³»ç»Ÿæ—¶é—´è®¾ç½®éšæœºæ•°ç§å­
     fp = fopen("D:\\text.txt", "w");
     int a,b,c,d,c1;
     for(int i=0;i<n;i++)
     {
-         c=symbol();//1µ½4Ëæ»úº¯Êı
+         c=symbol();//1åˆ°4éšæœºå‡½æ•°
          if(rang==0)
           {
               a=re_ten();
@@ -466,16 +466,16 @@ void display_brackte1(int n,int rang,int add,int sub,int mul,int div,int way)
           }
     }
 }
-//¸¡µãÊı+À¨ºÅ
+//æµ®ç‚¹æ•°+æ‹¬å·
 void display_brackte2(int n,int rang,int add,int sub,int mul,int div,int way)
 {
-    srand(time(0));//¸ù¾İÏµÍ³Ê±¼äÉèÖÃËæ»úÊıÖÖ×Ó
+    srand(time(0));//æ ¹æ®ç³»ç»Ÿæ—¶é—´è®¾ç½®éšæœºæ•°ç§å­
     fp = fopen("D:\\text.txt", "w");
     int c,c1,i;
     float a,b,d;
     for(i=0;i<n;i++)
     {
-         c=symbol();//1µ½4Ëæ»úº¯Êı
+         c=symbol();//1åˆ°4éšæœºå‡½æ•°
          if(rang==0)
           {
               a=fl_ten();
